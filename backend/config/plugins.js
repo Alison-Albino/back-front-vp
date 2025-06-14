@@ -15,5 +15,10 @@ module.exports = ({ env }) => ({
       },
     },
   },
+  // Adicione esta seção para desabilitar explicitamente o provedor de upload local
+  local: {
+    enabled: false,
+    resolve: './src/plugins/upload-local',
+  },
   // ...
 }); 
