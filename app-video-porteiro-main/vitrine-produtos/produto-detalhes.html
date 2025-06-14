@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Detalhes do Produto - Vídeo Porteiros e Controles de Acesso</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<link rel="shortcut icon" href="Logo.png" type="image/x-icon">
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#8A2BE2',secondary:'#6a11cb'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 100%);
+color: #fff;
+font-family: 'Inter', sans-serif;
+}
+.hero-section {
+background: linear-gradient(180deg, rgba(10, 10, 20, 0.9) 0%, rgba(15, 15, 30, 0.95) 100%);
+position: relative;
+overflow: hidden;
+}
+.glow-text {
+text-shadow: 0 0 15px rgba(138, 43, 226, 0.7);
+}
+.glow-box {
+box-shadow: 0 0 20px rgba(138, 43, 226, 0.3);
+}
+.loading-spinner {
+border: 3px solid rgba(138, 43, 226, 0.3);
+border-top: 3px solid #8A2BE2;
+border-radius: 50%;
+width: 40px;
+height: 40px;
+animation: spin 1s linear infinite;
+}
+@keyframes spin {
+0% { transform: rotate(0deg); }
+100% { transform: rotate(360deg); }
+}
+.image-gallery {
+display: grid;
+grid-template-columns: 1fr 100px;
+gap: 1rem;
+}
+.main-image {
+aspect-ratio: 4/3;
+border-radius: 12px;
+overflow: hidden;
+}
+.thumbnail-list {
+display: flex;
+flex-direction: column;
+gap: 0.5rem;
+}
+.thumbnail {
+aspect-ratio: 1;
+border-radius: 8px;
+overflow: hidden;
+cursor: pointer;
+border: 2px solid transparent;
+transition: border-color 0.3s;
+}
+.thumbnail.active {
+border-color: #8A2BE2;
+}
+.thumbnail:hover {
+border-color: rgba(138, 43, 226, 0.5);
+}
+.whatsapp-button {
+position: fixed;
+bottom: 20px;
+right: 20px;
+z-index: 100;
+}
+input, textarea, select {
+background-color: rgba(255, 255, 255, 0.05);
+border: 1px solid rgba(138, 43, 226, 0.3);
+color: white;
+}
+input:focus, textarea:focus, select:focus {
+border-color: rgba(138, 43, 226, 0.8);
+box-shadow: 0 0 0 2px rgba(138, 43, 226, 0.2);
+outline: none;
+}
+</style>
+</head>
+<body>
+<!-- Header -->
+<header class="fixed w-full z-50 transition-all duration-300" id="main-header">
+<div class="container mx-auto px-4 py-4">
+<div class="flex flex-col md:flex-row justify-center items-center">
+<a href="index.html" class="text-2xl font-['Pacifico'] text-primary mb-4 md:mb-0 md:mr-12"> 
+<img width="28" height="28" src="Logo.png" alt=""> 
+</a>
+<nav class="hidden md:flex items-center space-x-12">
+<a href="index.html#diferenciais" class="text-gray-300 hover:text-white transition-colors">Diferencial</a>
+<a href="index.html#sobre" class="text-gray-300 hover:text-white transition-colors">Sobre nós</a>
+<a href="produtos.html" class="text-gray-300 hover:text-white transition-colors">Produtos</a>
+<a href="index.html#orcamento" class="px-6 py-2 bg-primary text-white rounded-button hover:bg-opacity-90 transition-all whitespace-nowrap">
+Fazer orçamento
+</a>
+</nav>
+<button class="md:hidden w-10 h-10 flex items-center justify-center text-white absolute right-4 top-4">
+<i class="ri-menu-line text-2xl"></i>
+</button>
+</div>
+</div>
+</header>
+
+<main class="pt-20">
+<!-- Loading State -->
+<div id="loadingState" class="min-h-screen flex justify-center items-center">
+<div class="text-center">
+<div class="loading-spinner mx-auto mb-4"></div>
+<p class="text-gray-300">Carregando produto...</p>
+</div>
+</div>
+
+<!-- Error State -->
+<div id="errorState" class="hidden min-h-screen flex justify-center items-center">
+<div class="text-center">
+<div class="w-16 h-16 mx-auto mb-4 rounded-full bg-red-500/20 flex items-center justify-center">
+<i class="ri-error-warning-line text-2xl text-red-500"></i>
+</div>
+<h2 class="text-2xl font-bold mb-2">Produto não encontrado</h2>
+<p class="text-gray-400 mb-6">O produto solicitado não existe ou foi removido.</p>
+<a href="produtos.html" class="px-6 py-2 bg-primary text-white rounded-button hover:bg-opacity-90">
+Ver todos os produtos
+</a>
+</div>
+</div>
+
+<!-- Product Content -->
+<div id="productContent" class="hidden">
+<!-- Breadcrumb -->
+<section class="py-6 bg-[#0a0a14]">
+<div class="container mx-auto px-4">
+<nav class="flex items-center space-x-2 text-sm">
+<a href="index.html" class="text-gray-400 hover:text-white">Início</a>
+<i class="ri-arrow-right-s-line text-gray-500"></i>
+<a href="produtos.html" class="text-gray-400 hover:text-white">Produtos</a>
+<i class="ri-arrow-right-s-line text-gray-500"></i>
+<span class="text-white" id="breadcrumbProduct">Carregando...</span>
+</nav>
+</div>
+</section>
+
+<!-- Product Details -->
+<section class="py-12 bg-[#0a0a14]">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+<!-- Images -->
+<div class="space-y-6">
+<div id="imageGallery" class="image-gallery relative">
+<div class="main-image relative">
+<img id="mainImage" src="" alt="" class="w-full h-full object-contain">
+<!-- Navigation Buttons -->
+<button id="prevImageBtn" class="absolute left-4 top-1/2 -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition-colors z-10">
+<i class="ri-arrow-left-s-line text-2xl"></i>
+</button>
+<button id="nextImageBtn" class="absolute right-4 top-1/2 -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition-colors z-10">
+<i class="ri-arrow-right-s-line text-2xl"></i>
+</button>
+</div>
+<div class="thumbnail-list" id="thumbnailList">
+<!-- Thumbnails will be inserted here -->
+</div>
+</div>
+</div>
+
+<!-- Product Info -->
+<div class="space-y-6">
+<div>
+<div class="flex items-center gap-4 mb-2">
+<h1 id="productName" class="text-3xl font-bold glow-text">Carregando...</h1>
+<div id="highlightBadge" class="hidden px-3 py-1 bg-primary bg-opacity-20 rounded-full text-xs text-primary">
+Destaque
+</div>
+</div>
+<div class="flex items-center gap-4 mb-4">
+<span id="productBrand" class="text-lg text-primary font-medium">Carregando...</span>
+<span class="text-gray-400">•</span>
+<span id="productCategory" class="text-gray-400">Carregando...</span>
+</div>
+<p id="productDescription" class="text-gray-300 text-lg leading-relaxed">
+Carregando descrição...
+</p>
+</div>
+
+<!-- Price -->
+<div id="priceSection" class="hidden">
+<div class="text-2xl font-bold text-primary" id="productPrice">
+R$ 0,00
+</div>
+<p class="text-sm text-gray-400">Preço sujeito a alteração</p>
+</div>
+
+<!-- Features -->
+<div id="featuresSection" class="hidden">
+<h3 class="text-xl font-bold mb-4">Características</h3>
+<ul id="featuresList" class="space-y-3">
+<!-- Features will be inserted here -->
+</ul>
+</div>
+
+<!-- Specifications -->
+<div id="specificationsSection" class="hidden">
+<h3 class="text-xl font-bold mb-4">Especificações Técnicas</h3>
+<div id="specificationsList" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Specifications will be inserted here -->
+</div>
+</div>
+
+<!-- Actions -->
+<div class="flex gap-4">
+<a id="whatsappLink" href="#" target="_blank" class="flex-1 text-center py-3 bg-primary text-white rounded-button hover:bg-opacity-90 transition-colors">
+<i class="ri-whatsapp-line mr-2"></i>
+Solicitar Orçamento
+</a>
+<a href="produtos.html" class="px-6 py-3 border border-primary text-primary rounded-button hover:bg-primary hover:text-white transition-colors">
+Ver Mais Produtos
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+
+<!-- Footer -->
+<footer class="bg-[#0a0a14] pt-16 pb-8">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+<div>
+<a href="index.html" class="text-2xl font-['Pacifico'] text-primary mb-4 md:mb-0 md:mr-12"> 
+<img width="28" height="28" src="Logo.png" alt=""> 
+</a>
+<p class="text-gray-400 mb-6">Soluções tecnológicas para segurança e conforto do seu lar ou empresa.</p>
+<div class="flex space-x-4">
+<a href="#" class="w-10 h-10 rounded-full bg-[#12121e] flex items-center justify-center text-gray-300 hover:text-primary transition-colors">
+<i class="ri-facebook-fill"></i>
+</a>
+<a href="#" class="w-10 h-10 rounded-full bg-[#12121e] flex items-center justify-center text-gray-300 hover:text-primary transition-colors">
+<i class="ri-instagram-line"></i>
+</a>
+<a href="#" class="w-10 h-10 rounded-full bg-[#12121e] flex items-center justify-center text-gray-300 hover:text-primary transition-colors">
+<i class="ri-linkedin-fill"></i>
+</a>
+</div>
+</div>
+<div>
+<h3 class="text-lg font-bold mb-4">Navegação</h3>
+<ul class="space-y-3">
+<li><a href="index.html" class="text-gray-400 hover:text-white transition-colors">Início</a></li>
+<li><a href="index.html#diferenciais" class="text-gray-400 hover:text-white transition-colors">Diferenciais</a></li>
+<li><a href="index.html#sobre" class="text-gray-400 hover:text-white transition-colors">Sobre nós</a></li>
+<li><a href="index.html#orcamento" class="text-gray-400 hover:text-white transition-colors">Orçamento</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-bold mb-4">Serviços</h3>
+<ul class="space-y-3">
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Vídeo porteiros</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Controle de acesso</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Automação residencial</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Manutenção</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-bold mb-4">Contato</h3>
+<ul class="space-y-3">
+<li class="flex items-start">
+<i class="ri-map-pin-line text-primary mt-1 mr-3"></i>
+<span class="text-gray-400">Portugal</span>
+</li>
+<li class="flex items-start">
+<i class="ri-phone-line text-primary mt-1 mr-3"></i>
+<span class="text-gray-400">+351 938 579 125</span>
+</li>
+<li class="flex items-start">
+<i class="ri-mail-line text-primary mt-1 mr-3"></i>
+<span class="text-gray-400"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4b2824253f2a3f240b2e332e263b272465282426">[email&#160;protected]</a></span>
+</li>
+</ul>
+</div>
+</div>
+<div class="border-t border-gray-800 pt-8">
+<div class="flex flex-col md:flex-row justify-between items-center">
+<p class="text-gray-500 text-sm mb-4 md:mb-0">© 2025 Todos os direitos reservados - Dev Alison Albino</p> 
+<div class="flex items-center space-x-4">
+<a href="#" class="text-gray-500 hover:text-white text-sm">Política de Privacidade</a>
+<a href="#" class="text-gray-500 hover:text-white text-sm">Termos de Uso</a>
+</div>
+</div>
+</div>
+</div>
+</footer>
+
+<!-- WhatsApp Button -->
+<a 
+href="https://wa.me/351938579125" 
+class="whatsapp-button w-14 h-14 rounded-full bg-green-500 flex items-center justify-center shadow-lg hover:bg-green-600 transition-colors"
+target="_blank" 
+rel="noopener noreferrer"
+>
+<i class="ri-whatsapp-line text-white text-2xl"></i>
+</a>
+
+<!-- IMPORTANTE: Carregar o script principal de integração -->
+<script src="integracao-html.js"></script>
+</body>
+</html>

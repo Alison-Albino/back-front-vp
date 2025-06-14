@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Serviços de Instalação - Vídeo Porteiros e Controles de Acesso</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<link rel="shortcut icon" href="Logo.png" type="image/x-icon">
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#8A2BE2',secondary:'#6a11cb'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 100%);
+color: #fff;
+font-family: 'Inter', sans-serif;
+}
+.hero-section {
+background: linear-gradient(180deg, rgba(10, 10, 20, 0.9) 0%, rgba(15, 15, 30, 0.95) 100%);
+position: relative;
+overflow: hidden;
+}
+.hero-section::before {
+content: "";
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background: url('img/bg.jpg') center/cover no-repeat;
+opacity: 0.5;
+z-index: -1;
+}
+.glow-text {
+text-shadow: 0 0 15px rgba(138, 43, 226, 0.7);
+}
+.glow-box {
+box-shadow: 0 0 20px rgba(138, 43, 226, 0.3);
+}
+.product-card {
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.product-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 10px 25px rgba(138, 43, 226, 0.4);
+}
+.badge-glow {
+animation: pulse 2s infinite;
+}
+@keyframes pulse {
+0% { box-shadow: 0 0 0 0 rgba(138, 43, 226, 0.7); }
+70% { box-shadow: 0 0 0 10px rgba(138, 43, 226, 0); }
+100% { box-shadow: 0 0 0 0 rgba(138, 43, 226, 0); }
+}
+input, textarea, select {
+background-color: rgba(255, 255, 255, 0.05);
+border: 1px solid rgba(138, 43, 226, 0.3);
+color: white;
+}
+input:focus, textarea:focus, select:focus {
+border-color: rgba(138, 43, 226, 0.8);
+box-shadow: 0 0 0 2px rgba(138, 43, 226, 0.2);
+outline: none;
+}
+.feature-card {
+transition: all 0.3s ease;
+}
+.feature-card:hover {
+transform: translateY(-5px);
+background: rgba(138, 43, 226, 0.1);
+}
+.whatsapp-button {
+position: fixed;
+bottom: 20px;
+right: 20px;
+z-index: 100;
+}
+</style>
+</head>
+<body>
+<header class="fixed w-full z-50 transition-all duration-300" id="main-header">
+<div class="container mx-auto px-4 py-4">
+<div class="flex flex-col md:flex-row justify-center items-center">
+<a href="#inicio0" class="text-2xl font-['Pacifico'] text-primary mb-4 md:mb-0 md:mr-12"> <img width="28" height="28" src="Logo.png" alt=""> </a>
+<nav class="hidden md:flex items-center space-x-12">
+<a href="#diferenciais" class="text-gray-300 hover:text-white transition-colors">Diferencial</a>
+<a href="#sobre" class="text-gray-300 hover:text-white transition-colors">Sobre nós</a>
+<a href="produtos.html" class="text-gray-300 hover:text-white transition-colors">Produtos</a>
+<a href="#orcamento" class="px-6 py-2 bg-primary text-white rounded-button hover:bg-opacity-90 transition-all whitespace-nowrap">
+Fazer orçamento
+</a>
+</nav>
+<button class="md:hidden w-10 h-10 flex items-center justify-center text-white absolute right-4 top-4">
+<i class="ri-menu-line text-2xl"></i>
+</button>
+</div>
+</div>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="hero-section min-h-screen flex items-center pt-20 relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-radial from-primary/30 via-transparent to-transparent opacity-50" style="background: radial-gradient(circle at center, rgba(138, 43, 226, 0.3) 0%, rgba(138, 43, 226, 0.1) 30%, transparent 70%)"></div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40rem] h-[40rem] rounded-full bg-primary/5 blur-[100px] animate-pulse"></div>
+<div class="container mx-auto px-4 py-20 relative">
+<div class="flex flex-col items-center text-center mb-8">
+<div class="inline-flex items-center px-4 py-2 rounded-full bg-primary bg-opacity-20 border border-primary border-opacity-30 mb-8 badge-glow">
+<div class="w-2 h-2 rounded-full bg-primary mr-2"></div>
+<span id="inicio0" class="text-sm font-medium">Atendimento 24h</span>
+</div>
+</div>
+<h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-center mb-4 glow-text">
+Inovando no mercado<br>de instalações.
+</h1>
+<p class="text-xl md:text-2xl text-gray-300 text-center max-w-3xl mx-auto mb-12">
+Tecnologia, segurança e praticidade para o seu dia a dia.
+</p>
+<div class="flex justify-center">
+<a href="#orcamento" class="px-8 py-3 bg-primary text-white text-lg rounded-button hover:bg-opacity-90 transition-all shadow-lg hover:shadow-xl whitespace-nowrap">
+Solicitar Orçamento
+</a>
+</div>
+</div>
+</section>
+<!-- Produtos Section -->
+<section class="py-20 bg-[#0a0a14] relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-radial from-primary/30 via-transparent to-transparent opacity-50" style="background: radial-gradient(circle at 50% 50%, rgba(138, 43, 226, 0.3) 0%, rgba(138, 43, 226, 0.1) 30%, transparent 70%)"></div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40rem] h-[40rem] rounded-full bg-primary/5 blur-[100px] animate-pulse"></div>
+<div class="container mx-auto px-4 relative">
+<div class="text-center mb-16">
+<h2 class="text-3xl md:text-4xl font-bold mb-4">Soluções de Alta Tecnologia</h2>
+<p class="text-gray-300 max-w-2xl mx-auto">Oferecemos equipamentos de última geração das melhores marcas do mercado para garantir segurança e praticidade.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Bticino -->
+<div class="product-card bg-[#12121e] rounded-lg overflow-hidden border border-gray-800 glow-box">
+<div class="h-64 overflow-hidden">
+<img src="img/img1.webp" alt="Bticino Video Porteiro" class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105">
+</div>
+<div class="p-6">
+<div class="flex items-center mb-4">
+<h3 class="text-xl font-bold">Bticino</h3>
+<div class="ml-auto px-3 py-1 bg-primary bg-opacity-20 rounded-full text-xs text-primary">Premium</div>
+</div>
+<p class="text-gray-400 mb-4">Vídeo porteiros com design italiano, tela touch e conectividade Wi-Fi para controle via smartphone.</p>
+<ul class="space-y-2 mb-6">
+<li class="flex items-center text-sm text-gray-300">
+<div class="w-5 h-5 mr-2 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+Integração com sistemas smart home
+</li>
+<li class="flex items-center text-sm text-gray-300">
+<div class="w-5 h-5 mr-2 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+Câmera HD com visão noturna
+</li>
+<li class="flex items-center text-sm text-gray-300">
+<div class="w-5 h-5 mr-2 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+Atendimento remoto via aplicativo
+</li>
+</ul>
+<a href="produtos.html" class="inline-block w-full text-center py-2 border border-primary text-primary rounded-button hover:bg-primary hover:text-white transition-colors whitespace-nowrap">Ver informações</a>
+</div>
+</div>
+<!-- Fermax -->
+<div class="product-card bg-[#12121e] rounded-lg overflow-hidden border border-gray-800 glow-box">
+<div class="h-64 overflow-hidden">
+<img src="img/img2.webp" alt="Fermax Controle de Acesso" class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105">
+</div>
+<div class="p-6">
+<div class="flex items-center mb-4">
+<h3 class="text-xl font-bold">Fermax</h3>
+<div class="ml-auto px-3 py-1 bg-primary bg-opacity-20 rounded-full text-xs text-primary">Profissional</div>
+</div>
+<p class="text-gray-400 mb-4">Sistemas de controle de acesso com reconhecimento facial e tecnologia anti-clonagem para máxima segurança.</p>
+<ul class="space-y-2 mb-6">
+<li class="flex items-center text-sm text-gray-300">
+<div class="w-5 h-5 mr-2 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+Múltiplos métodos de autenticação
+</li>
+<li class="flex items-center text-sm text-gray-300">
+<div class="w-5 h-5 mr-2 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+Software de gestão de acessos
+</li>
+<li class="flex items-center text-sm text-gray-300">
+<div class="w-5 h-5 mr-2 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+Registro de eventos em tempo real
+</li>
+</ul>
+<a href="produtos.html" class="inline-block w-full text-center py-2 border border-primary text-primary rounded-button hover:bg-primary hover:text-white transition-colors whitespace-nowrap">Ver informações</a>
+</div>
+</div>
+<!-- Comelit -->
+<div class="product-card bg-[#12121e] rounded-lg overflow-hidden border border-gray-800 glow-box">
+<div class="h-64 overflow-hidden">
+<img src="img/img3.webp" alt="Comelit Sistema Integrado" class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105">
+</div>
+<div class="p-6">
+<div class="flex items-center mb-4">
+<h3 class="text-xl font-bold">Comelit</h3>
+<div class="ml-auto px-3 py-1 bg-primary bg-opacity-20 rounded-full text-xs text-primary">Integrado</div>
+</div>
+<p class="text-gray-400 mb-4">Sistemas integrados de segurança residencial com monitoramento centralizado e interface intuitiva.</p>
+<ul class="space-y-2 mb-6">
+<li class="flex items-center text-sm text-gray-300">
+<div class="w-5 h-5 mr-2 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+Integração com alarmes e CFTV
+</li>
+<li class="flex items-center text-sm text-gray-300">
+<div class="w-5 h-5 mr-2 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+Controle por comandos de voz
+</li>
+<li class="flex items-center text-sm text-gray-300">
+<div class="w-5 h-5 mr-2 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+Automação residencial avançada
+</li>
+</ul>
+<a href="produtos.html" class="inline-block w-full text-center py-2 border border-primary text-primary rounded-button hover:bg-primary hover:text-white transition-colors whitespace-nowrap">Ver informações</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Diferenciais Section -->
+<section class="py-20" id="diferenciais">
+<div class="container mx-auto px-4">
+<div class="text-center mb-16">
+<h2 class="text-3xl md:text-4xl font-bold mb-4">Nossos Diferenciais</h2>
+<p class="text-gray-300 max-w-2xl mx-auto">O que nos torna a melhor escolha para sua segurança e conforto.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="feature-card p-8 rounded-lg border border-gray-800 bg-[#12121e]">
+<div class="w-16 h-16 mb-6 rounded-full bg-primary bg-opacity-20 flex items-center justify-center">
+<div class="w-8 h-8 flex items-center justify-center text-primary text-2xl">
+<i class="ri-time-line"></i>
+</div>
+</div>
+<h3 class="text-xl font-bold mb-4">Atendimento 24 horas</h3>
+<p class="text-gray-400">Suporte técnico disponível a qualquer hora do dia ou da noite para resolver suas emergências.</p>
+</div>
+<div class="feature-card p-8 rounded-lg border border-gray-800 bg-[#12121e]">
+<div class="w-16 h-16 mb-6 rounded-full bg-primary bg-opacity-20 flex items-center justify-center">
+<div class="w-8 h-8 flex items-center justify-center text-primary text-2xl">
+<i class="ri-shield-check-line"></i>
+</div>
+</div>
+<h3 class="text-xl font-bold mb-4">Garantia estendida</h3>
+<p class="text-gray-400">Oferecemos garantia de até 3 anos em todos os equipamentos instalados pela nossa equipe.</p>
+</div>
+<div class="feature-card p-8 rounded-lg border border-gray-800 bg-[#12121e]">
+<div class="w-16 h-16 mb-6 rounded-full bg-primary bg-opacity-20 flex items-center justify-center">
+<div class="w-8 h-8 flex items-center justify-center text-primary text-2xl">
+<i class="ri-user-star-line"></i>
+</div>
+</div>
+<h3 class="text-xl font-bold mb-4">Técnicos certificados</h3>
+<p class="text-gray-400">Equipe treinada e certificada pelas principais fabricantes do mercado.</p>
+</div>
+<div class="feature-card p-8 rounded-lg border border-gray-800 bg-[#12121e]">
+<div class="w-16 h-16 mb-6 rounded-full bg-primary bg-opacity-20 flex items-center justify-center">
+<div class="w-8 h-8 flex items-center justify-center text-primary text-2xl">
+<i class="ri-tools-line"></i>
+</div>
+</div>
+<h3 class="text-xl font-bold mb-4">Instalação profissional</h3>
+<p class="text-gray-400">Instalação limpa e organizada, com acabamento impecável e sem danos à sua estrutura.</p>
+</div>
+<div class="feature-card p-8 rounded-lg border border-gray-800 bg-[#12121e]">
+<div class="w-16 h-16 mb-6 rounded-full bg-primary bg-opacity-20 flex items-center justify-center">
+<div class="w-8 h-8 flex items-center justify-center text-primary text-2xl">
+<i class="ri-customer-service-2-line"></i>
+</div>
+</div>
+<h3 class="text-xl font-bold mb-4">Suporte pós-venda</h3>
+<p class="text-gray-400">Acompanhamento contínuo após a instalação para garantir o funcionamento perfeito do sistema.</p>
+</div>
+<div class="feature-card p-8 rounded-lg border border-gray-800 bg-[#12121e]">
+<div class="w-16 h-16 mb-6 rounded-full bg-primary bg-opacity-20 flex items-center justify-center">
+<div class="w-8 h-8 flex items-center justify-center text-primary text-2xl">
+<i class="ri-price-tag-3-line"></i>
+</div>
+</div>
+<h3 class="text-xl font-bold mb-4">Preços competitivos</h3>
+<p class="text-gray-400">Melhor custo-benefício do mercado, com opções de parcelamento e pacotes personalizados.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Tecnologias Section -->
+<section class="py-20 bg-[#0a0a14] relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-radial from-primary/20 via-transparent to-transparent opacity-50"></div>
+<div class="container mx-auto px-4">
+<div class="text-center mb-16">
+<h2 class="text-3xl md:text-4xl font-bold mb-4">Tecnologias Avançadas</h2>
+<p class="text-gray-300 max-w-2xl mx-auto">Utilizamos as mais modernas tecnologias de identificação e controle de acesso.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+<div class="tech-card p-8 rounded-lg border border-primary/30 bg-[#12121e] relative group hover:border-primary/60 transition-all duration-500">
+<div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+<div class="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent animate-pulse"></div>
+<div class="absolute -inset-[1px] bg-gradient-to-r from-primary/30 to-transparent rounded-lg blur opacity-30"></div>
+</div>
+<div class="relative">
+<div class="w-16 h-16 mb-6 rounded-full bg-primary/20 flex items-center justify-center tech-icon">
+<div class="w-8 h-8 flex items-center justify-center text-primary text-2xl">
+<i class="ri-fingerprint-line"></i>
+</div>
+</div>
+<h3 class="text-2xl font-bold mb-4 tech-title">Biometria Digital</h3>
+<ul class="space-y-4">
+<li class="flex items-start">
+<div class="w-5 h-5 mt-1 mr-3 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<p class="text-gray-300">Leitura ultrarrápida em menos de 0.5 segundos</p>
+</li>
+<li class="flex items-start">
+<div class="w-5 h-5 mt-1 mr-3 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<p class="text-gray-300">Capacidade para mais de 10.000 digitais</p>
+</li>
+<li class="flex items-start">
+<div class="w-5 h-5 mt-1 mr-3 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<p class="text-gray-300">Sistema anti-fraude com detecção de dedo falso</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="tech-card p-8 rounded-lg border border-primary/30 bg-[#12121e] relative group hover:border-primary/60 transition-all duration-500">
+<div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+<div class="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent animate-pulse"></div>
+<div class="absolute -inset-[1px] bg-gradient-to-r from-primary/30 to-transparent rounded-lg blur opacity-30"></div>
+</div>
+<div class="relative">
+<div class="w-16 h-16 mb-6 rounded-full bg-primary/20 flex items-center justify-center tech-icon">
+<div class="w-8 h-8 flex items-center justify-center text-primary text-2xl">
+<i class="ri-radio-line"></i>
+</div>
+</div>
+<h3 class="text-2xl font-bold mb-4 tech-title">Tecnologia RFID</h3>
+<ul class="space-y-4">
+<li class="flex items-start">
+<div class="w-5 h-5 mt-1 mr-3 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<p class="text-gray-300">Leitura sem contato a até 10cm de distância</p>
+</li>
+<li class="flex items-start">
+<div class="w-5 h-5 mt-1 mr-3 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<p class="text-gray-300">Criptografia avançada contra clonagem</p>
+</li>
+<li class="flex items-start">
+<div class="w-5 h-5 mt-1 mr-3 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<p class="text-gray-300">Compatível com cartões, tags e pulseiras</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Sobre Nós Section -->
+<section class="py-20 bg-[#0a0a14]" id="sobre">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center mb-20">
+<div>
+<h2 class="text-3xl md:text-4xl font-bold mb-6">Sobre Nós</h2>
+<p class="text-gray-300 mb-6">Há mais de 10 anos no mercado, somos especialistas em soluções de segurança e automação para residências e empresas. Nossa missão é proporcionar tranquilidade e praticidade através da tecnologia.</p>
+<p class="text-gray-300 mb-8">Contamos com uma equipe altamente qualificada e comprometida em oferecer o melhor serviço, desde o primeiro contato até o suporte pós-venda.</p>
+<div class="grid grid-cols-2 gap-6">
+<div class="stats-card p-6 bg-[#12121e] rounded-lg border border-gray-800 transform translate-y-8 opacity-0 transition-all duration-700">
+<div class="text-3xl font-bold text-primary mb-2">
+  <span class="counter" data-target="1500">0</span>+
+</div>
+<p class="text-gray-400">Instalações realizadas</p>
+</div>
+<div class="stats-card p-6 bg-[#12121e] rounded-lg border border-gray-800 transform translate-y-8 opacity-0 transition-all duration-700 delay-200">
+<div class="text-3xl font-bold text-primary mb-2">
+  <span class="counter" data-target="98">0</span>%
+</div>
+<p class="text-gray-400">Clientes satisfeitos</p>
+</div>
+</div>
+</div>
+<div class="relative h-96 rounded-lg overflow-hidden">
+  <video 
+    src="img/vid.mp4" 
+    class="w-full h-full object-cover object-top" 
+    autoplay 
+    muted 
+    loop
+    playsinline
+  >
+    Seu navegador não suporta o elemento de vídeo.
+  </video>
+  <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a14] to-transparent opacity-60"></div>
+</div>
+</div>
+<div class="text-center">
+<h3 class="text-2xl font-bold mb-8">Nossos Parceiros</h3>
+<div class="flex justify-center">
+  <div class="bg-[#12121e] p-2 rounded-lg border border-gray-800 hover:border-primary transition-colors w-64">
+    <img src="img/img5.webp" alt="Lopes & Nobre" class="w-full h-auto rounded-lg">
+  </div>
+</div>
+</div>
+</div>
+</section>
+
+<script>
+// Função para animar contadores
+function animateCounter(element, target, duration = 2000) {
+  let start = 0;
+  const increment = target / (duration / 16); // 60fps
+  
+  const timer = setInterval(() => {
+    start += increment;
+    if (start >= target) {
+      element.textContent = target;
+      clearInterval(timer);
+    } else {
+      element.textContent = Math.floor(start);
+    }
+  }, 16);
+}
+
+// Intersection Observer para detectar quando a seção entra na viewport
+const observerOptions = {
+  threshold: 0.3,
+  rootMargin: '0px 0px -100px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      // Animar entrada dos cards
+      const statsCards = entry.target.querySelectorAll('.stats-card');
+      statsCards.forEach((card, index) => {
+        setTimeout(() => {
+          card.classList.remove('translate-y-8', 'opacity-0');
+          card.classList.add('translate-y-0', 'opacity-100');
+        }, index * 200);
+      });
+      
+      // Animar contadores após um pequeno delay
+      setTimeout(() => {
+        const counters = entry.target.querySelectorAll('.counter');
+        counters.forEach(counter => {
+          const target = parseInt(counter.getAttribute('data-target'));
+          animateCounter(counter, target, target > 100 ? 3000 : 2000);
+        });
+      }, 800);
+      
+      // Parar de observar após a animação
+      observer.unobserve(entry.target);
+    }
+  });
+}, observerOptions);
+
+// Observar a seção sobre
+document.addEventListener('DOMContentLoaded', () => {
+  const sobreSection = document.getElementById('sobre');
+  if (sobreSection) {
+    observer.observe(sobreSection);
+  }
+});
+</script>
+
+<style>
+.stats-card {
+  transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.stats-card.animate {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.counter {
+  display: inline-block;
+  font-variant-numeric: tabular-nums;
+}
+</style>
+<!-- Formulário de Orçamento -->
+<section class="py-20" id="orcamento">
+<div class="container mx-auto px-4">
+<div class="max-w-3xl mx-auto">
+<div class="text-center mb-12">
+<h2 class="text-3xl md:text-4xl font-bold mb-4">Solicite um Orçamento</h2>
+<p class="text-gray-300">Preencha o formulário abaixo e nossa equipe entrará em contato em até 24 horas.</p>
+</div>
+<form 
+  id="form"
+  action="https://getform.io/f/bronxpga" 
+  method="POST"
+  class="bg-[#12121e] p-8 rounded-lg border border-gray-800 glow-box"
+>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+    <div>
+      <label for="nome" class="block text-sm font-medium text-gray-300 mb-2">Nome completo</label>
+      <input type="text" name="Nome" id="nome" class="w-full px-4 py-3 rounded-lg border-none focus:ring-2 focus:ring-primary" placeholder="Seu nome" required>
+    </div>
+    <div>
+      <label for="telefone" class="block text-sm font-medium text-gray-300 mb-2">Telefone</label>
+      <input type="tel" name="Telefone" id="telefone" class="w-full px-4 py-3 rounded-lg border-none focus:ring-2 focus:ring-primary" placeholder="(00) 00000-0000" required>
+    </div>
+  </div>
+  <div class="mb-6">
+    <label for="email" class="block text-sm font-medium text-gray-300 mb-2">E-mail</label>
+    <input type="email" name="Email" id="email" class="w-full px-4 py-3 rounded-lg border-none focus:ring-2 focus:ring-primary" placeholder="seu@email.com" required>
+  </div>
+  <div class="mb-8">
+    <label for="mensagem" class="block text-sm font-medium text-gray-300 mb-2">Mensagem (opcional)</label>
+    <textarea name="Mensagem" id="mensagem" rows="4" class="w-full px-4 py-3 rounded-lg border-none focus:ring-2 focus:ring-primary" placeholder="Descreva sua necessidade..."></textarea>
+  </div>
+  <button type="submit" class="w-full py-3 bg-primary text-white rounded-button hover:bg-opacity-90 transition-all text-lg font-medium whitespace-nowrap">
+    Enviar solicitação
+  </button>
+</form>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-[#0a0a14] pt-16 pb-8">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+<div>
+<a href="#" class="text-2xl font-['Pacifico'] text-primary mb-4 md:mb-0 md:mr-12"> <img width="28" height="28" src="Logo.png" alt=""> </a>
+<p class="text-gray-400 mb-6">Soluções tecnológicas para segurança e conforto do seu lar ou empresa.</p>
+<div class="flex space-x-4">
+<a href="#" class="w-10 h-10 rounded-full bg-[#12121e] flex items-center justify-center text-gray-300 hover:text-primary transition-colors">
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-facebook-fill"></i>
+</div>
+</a>
+<a href="#" class="w-10 h-10 rounded-full bg-[#12121e] flex items-center justify-center text-gray-300 hover:text-primary transition-colors">
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-instagram-line"></i>
+</div>
+</a>
+<a href="#" class="w-10 h-10 rounded-full bg-[#12121e] flex items-center justify-center text-gray-300 hover:text-primary transition-colors">
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-linkedin-fill"></i>
+</div>
+</a>
+</div>
+</div>
+<div>
+<h3 class="text-lg font-bold mb-4">Navegação</h3>
+<ul class="space-y-3">
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Início</a></li>
+<li><a href="#diferenciais" class="text-gray-400 hover:text-white transition-colors">Diferenciais</a></li>
+<li><a href="#sobre" class="text-gray-400 hover:text-white transition-colors">Sobre nós</a></li>
+<li><a href="#orcamento" class="text-gray-400 hover:text-white transition-colors">Orçamento</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-bold mb-4">Serviços</h3>
+<ul class="space-y-3">
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Vídeo porteiros</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Controle de acesso</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Automação residencial</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Manutenção</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-bold mb-4">Contato</h3>
+<ul class="space-y-3">
+<li class="flex items-start">
+<div class="w-5 h-5 mt-1 mr-3 flex-shrink-0 flex items-center justify-center text-primary">
+<i class="ri-map-pin-line"></i>
+</div>
+<span class="text-gray-400">Portugal</span>
+</li>
+<li class="flex items-start">
+<div class="w-5 h-5 mt-1 mr-3 flex-shrink-0 flex items-center justify-center text-primary">
+<i class="ri-phone-line"></i>
+</div>
+<span class="text-gray-400">+351 938 579 125</span>
+</li>
+<li class="flex items-start">
+<div class="w-5 h-5 mt-1 mr-3 flex-shrink-0 flex items-center justify-center text-primary">
+<i class="ri-mail-line"></i>
+</div>
+<span class="text-gray-400">contato@empresa.pt</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="border-t border-gray-800 pt-8">
+<div class="flex flex-col md:flex-row justify-between items-center">
+<p class="text-gray-500 text-sm mb-4 md:mb-0">© 2025 Todos os direitos reservado - Dev Alison Albino</p> 
+<div class="flex items-center space-x-4">
+<a href="#" class="text-gray-500 hover:text-white text-sm">Política de Privacidade</a>
+<a href="#" class="text-gray-500 hover:text-white text-sm">Termos de Uso</a>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<!-- WhatsApp Button -->
+<a 
+  href="https://wa.me/351938579125" 
+  class="whatsapp-button w-14 h-14 rounded-full bg-green-500 flex items-center justify-center shadow-lg hover:bg-green-600 transition-colors"
+  target="_blank" 
+  rel="noopener noreferrer"
+>
+  <div class="w-7 h-7 flex items-center justify-center text-white text-2xl">
+    <i class="ri-whatsapp-line"></i>
+  </div>
+</a>
+<script id="form-validation">
+document.addEventListener('DOMContentLoaded', function() {
+const form = document.querySelector('form');
+const inputs = form.querySelectorAll('input, select, textarea');
+form.addEventListener('submit', function(e) {
+e.preventDefault();
+let isValid = true;
+inputs.forEach(input => {
+if (input.id !== 'mensagem' && !input.value.trim()) {
+isValid = false;
+input.classList.add('ring-2', 'ring-red-500');
+const label = input.previousElementSibling;
+if (label && !label.querySelector('.error-text')) {
+const errorSpan = document.createElement('span');
+errorSpan.className = 'error-text text-red-500 ml-2 text-xs';
+errorSpan.textContent = 'Campo obrigatório';
+label.appendChild(errorSpan);
+}
+} else {
+input.classList.remove('ring-2', 'ring-red-500');
+const label = input.previousElementSibling;
+const errorText = label && label.querySelector('.error-text');
+if (errorText) {
+errorText.remove();
+}
+}
+});
+if (isValid) {
+alert('Formulário enviado com sucesso! Entraremos em contato em breve.');
+form.reset();
+}
+});
+inputs.forEach(input => {
+input.addEventListener('input', function() {
+if (input.classList.contains('ring-red-500')) {
+input.classList.remove('ring-2', 'ring-red-500');
+const label = input.previousElementSibling;
+const errorText = label && label.querySelector('.error-text');
+if (errorText) {
+errorText.remove();
+}
+}
+});
+});
+});
+</script>
+<style>
+@keyframes neonPulse {
+0% { box-shadow: 0 0 5px rgba(138, 43, 226, 0.2), 0 0 10px rgba(138, 43, 226, 0.2), 0 0 15px rgba(138, 43, 226, 0.2); }
+50% { box-shadow: 0 0 10px rgba(138, 43, 226, 0.4), 0 0 20px rgba(138, 43, 226, 0.4), 0 0 30px rgba(138, 43, 226, 0.4); }
+100% { box-shadow: 0 0 5px rgba(138, 43, 226, 0.2), 0 0 10px rgba(138, 43, 226, 0.2), 0 0 15px rgba(138, 43, 226, 0.2); }
+}
+.tech-icon {
+animation: neonPulse 2s infinite;
+}
+.tech-card {
+transition: transform 0.3s ease;
+}
+.tech-card:hover {
+transform: translateY(-5px);
+}
+</style>
+<script id="scroll-animation">
+document.addEventListener('DOMContentLoaded', function() {
+const header = document.getElementById('main-header');
+window.addEventListener('scroll', () => {
+if (window.scrollY > 50) {
+header.style.backgroundColor = 'rgba(20, 20, 30, 0.95)';
+header.style.backdropFilter = 'blur(8px)';
+} else {
+header.style.backgroundColor = 'transparent';
+header.style.backdropFilter = 'none';
+}
+});
+const scrollLinks = document.querySelectorAll('a[href^="#"]');
+scrollLinks.forEach(link => {
+link.addEventListener('click', function(e) {
+e.preventDefault();
+const targetId = this.getAttribute('href');
+if (targetId === '#') return;
+const targetElement = document.querySelector(targetId);
+if (targetElement) {
+window.scrollTo({
+top: targetElement.offsetTop - 100,
+behavior: 'smooth'
+});
+}
+});
+});
+// Animação de entrada para cards
+const animateOnScroll = function() {
+const cards = document.querySelectorAll('.product-card, .feature-card');
+cards.forEach(card => {
+const cardTop = card.getBoundingClientRect().top;
+const windowHeight = window.innerHeight;
+if (cardTop < windowHeight * 0.9) {
+card.style.opacity = '1';
+card.style.transform = 'translateY(0)';
+}
+});
+};
+// Inicializa os cards com opacidade 0
+const cards = document.querySelectorAll('.product-card, .feature-card');
+cards.forEach(card => {
+card.style.opacity = '0';
+card.style.transform = 'translateY(20px)';
+card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+});
+// Executa a animação no carregamento e no scroll
+animateOnScroll();
+window.addEventListener('scroll', animateOnScroll);
+});
+</script>
+<script id="mobile-menu">
+document.addEventListener('DOMContentLoaded', function() {
+const menuButton = document.querySelector('.md\\:hidden');
+const mobileMenu = document.createElement('div');
+mobileMenu.className = 'fixed inset-0 bg-[#0f0f1a] z-50 transform translate-x-full transition-transform duration-300 ease-in-out';
+mobileMenu.innerHTML = `
+<div class="flex justify-end p-4">
+<button class="close-menu w-10 h-10 flex items-center justify-center text-white">
+<i class="ri-close-line text-2xl"></i>
+</button>
+</div>
+<div class="px-4 py-6">
+<ul class="space-y-6">
+<li><a href="#" class="text-xl font-medium text-white block py-2">Início</a></li>
+<li><a href="#diferenciais" class="text-xl font-medium text-white block py-2">Diferenciais</a></li>
+<li><a href="#sobre" class="text-xl font-medium text-white block py-2">Sobre nós</a></li>
+<li><a href="#orcamento" class="text-xl font-medium text-white block py-2">Orçamento</a></li>
+</ul>
+</div>
+`;
+document.body.appendChild(mobileMenu);
+menuButton.addEventListener('click', function() {
+mobileMenu.classList.remove('translate-x-full');
+});
+mobileMenu.querySelector('.close-menu').addEventListener('click', function() {
+mobileMenu.classList.add('translate-x-full');
+});
+mobileMenu.querySelectorAll('a').forEach(link => {
+link.addEventListener('click', function() {
+mobileMenu.classList.add('translate-x-full');
+});
+});
+});
+</script>
+</body>
+</html>

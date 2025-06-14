@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Debug - Verificar Produtos Strapi</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #1a1a2e;
+    color: white;
+    padding: 20px;
+}
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+.log {
+    background: #0f0f1a;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 10px 0;
+    border-left: 4px solid #8A2BE2;
+}
+.error {
+    border-left-color: #ff4444;
+    background: #2a1a1a;
+}
+.success {
+    border-left-color: #44ff44;
+    background: #1a2a1a;
+}
+button {
+    background: #8A2BE2;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
+}
+button:hover {
+    opacity: 0.8;
+}
+pre {
+    background: #0a0a14;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>🔍 Debug - Verificar Produtos Strapi</h1>
+
+<div class="log">
+<h3>📋 Ações disponíveis:</h3>
+<button onclick="verificarConexao()">1. Verificar Conexão</button>
+<button onclick="listarProdutos()">2. Listar Todos os Produtos</button>
+<button onclick="testarProdutoEspecifico()">3. Testar Produto Específico</button>
+<button onclick="criarProdutoTeste()">4. Criar Produto de Teste</button>
+</div>
+
+<div id="resultados"></div>
+</div>
+
+<script>
+const BASE_URL = 'http://localhost:1337';
+
+function log(message, type = 'log') {
+    const resultados = document.getElementById('resultados');
+    const div = document.createElement('div');
+    div.className = `log ${type}`;
+    div.innerHTML = `<strong>${new Date().toLocaleTimeString()}</strong><br>${message}`;
+    resultados.appendChild(div);
+    console.log(message);
+}
+
+async function verificarConexao() {
+    log('🚀 Verificando conexão com Strapi...', 'log');
+
+    try {
+        const response = await fetch(`${BASE_URL}/api/produtos`);
+
+        if (response.ok) {
+            log('✅ Conexão com Strapi OK!', 'success');
+            const data = await response.json();
+            log(`📊 Resposta recebida: <pre>${JSON.stringify(data, null, 2)}</pre>`, 'success');
+        } else {
+            log(`❌ Erro na conexão: ${response.status} - ${response.statusText}`, 'error');
+        }
+    } catch (error) {
+        log(`❌ Erro de conexão: ${error.message}`, 'error');
+        log('💡 Verifique se o Strapi está rodando em http://localhost:1337', 'error');
+    }
+}
+
+async function listarProdutos() {
+    log('📋 Listando todos os produtos...', 'log');
+
+    try {
+        const response = await fetch(`${BASE_URL}/api/produtos?populate=*`);
+
+        if (response.ok) {
+            const data = await response.json();
+            const produtos = data.data;
+
+            log(`✅ Encontrados ${produtos.length} produtos:`, 'success');
+
+            if (produtos.length === 0) {
+                log('⚠️ Nenhum produto encontrado! Você precisa criar produtos no Strapi.', 'error');
+                log('💡 Acesse: http://localhost:1337/admin/content-manager/collectionType/api::produto.produto', 'log');
+            } else {
+                produtos.forEach(produto => {
+                    log(`🔹 ID: ${produto.id} | Nome: ${produto.attributes.nome} | Categoria: ${produto.attributes.categoria}`, 'success');
+                });
+            }
+
+            log(`📊 Dados completos: <pre>${JSON.stringify(data, null, 2)}</pre>`, 'log');
+        } else {
+            log(`❌ Erro ao listar produtos: ${response.status}`, 'error');
+        }
+    } catch (error) {
+        log(`❌ Erro: ${error.message}`, 'error');
+    }
+}
+
+async function testarProdutoEspecifico() {
+    const id = prompt('Digite o ID do produto para testar:', '1');
+    if (!id) return;
+
+    log(`🔍 Testando produto ID: ${id}`, 'log');
+
+    try {
+        const response = await fetch(`${BASE_URL}/api/produtos/${id}?populate=*`);
+
+        if (response.ok) {
+            const data = await response.json();
+            log(`✅ Produto encontrado: ${data.data.attributes.nome}`, 'success');
+            log(`📊 Dados: <pre>${JSON.stringify(data, null, 2)}</pre>`, 'success');
+        } else {
+            log(`❌ Produto ID ${id} não encontrado! Status: ${response.status}`, 'error');
+            log('💡 Verifique se o ID existe na lista de produtos acima.', 'error');
+        }
+    } catch (error) {
+        log(`❌ Erro: ${error.message}`, 'error');
+    }
+}
+
+async function criarProdutoTeste() {
+    log('🛠️ Criando produto de teste...', 'log');
+
+    const produtoTeste = {
+        data: {
+            nome: "Produto de Teste",
+            marca: "Marca Teste",
+            categoria: "Teste",
+            descricao: "Este é um produto criado para teste",
+            caracteristicas: ["Característica 1", "Característica 2"],
+            especificacoes: {"Teste": "Valor teste"},
+            preco: 100.00,
+            destaque: true,
+            ativo: true
+        }
+    };
+
+    try {
+        const response = await fetch(`${BASE_URL}/api/produtos`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(produtoTeste)
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            log(`✅ Produto de teste criado com ID: ${data.data.id}`, 'success');
+            log(`📊 Dados: <pre>${JSON.stringify(data, null, 2)}</pre>`, 'success');
+            log(`🔗 Teste o link: produto-detalhes.html?id=${data.data.id}`, 'success');
+        } else {
+            const errorData = await response.json();
+            log(`❌ Erro ao criar produto: ${response.status}`, 'error');
+            log(`📊 Detalhes do erro: <pre>${JSON.stringify(errorData, null, 2)}</pre>`, 'error');
+        }
+    } catch (error) {
+        log(`❌ Erro: ${error.message}`, 'error');
+    }
+}
+
+// Executar verificação inicial
+document.addEventListener('DOMContentLoaded', function() {
+    log('🚀 Debug iniciado. Clique nos botões acima para testar.', 'log');
+});
+</script>
+</body>
+</html>
