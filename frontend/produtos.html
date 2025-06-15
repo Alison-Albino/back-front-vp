@@ -396,7 +396,7 @@ function createProdutoCard(produto) {
     const caracteristicas = Array.isArray(produto.caracteristicas) ? produto.caracteristicas.slice(0, 3) : [];
 
     card.innerHTML = `
-        <div class="h-80 overflow-hidden">
+        <div class="h-96 overflow-hidden">
             <img src="${imagemSrc}" alt="${produto.nome}" class="w-full h-full object-contain transition-transform duration-500 hover:scale-105" onerror="this.src='${StrapiConfig.createPlaceholderImage(produto.nome)}'">
         </div>
         <div class="p-6">
