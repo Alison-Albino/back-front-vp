@@ -1,0 +1,31 @@
+:root {
+  --strapi-color-primary-100: #f3e8ff;
+  --strapi-color-primary-500: #8A2BE2;
+  --strapi-color-primary-600: #7209b7;
+  --strapi-color-neutral-0: #0f0f1a;
+  --strapi-color-neutral-100: #1a1a2e;
+}
+
+[data-strapi-header] {
+  background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 100%) !important;
+  border-bottom: 1px solid #8A2BE2 !important;
+}
+
+[data-strapi-navigation] {
+  background: linear-gradient(180deg, #0f0f1a 0%, #1a1a2e 100%) !important;
+  border-right: 1px solid rgba(138, 43, 226, 0.3) !important;
+}
+
+[data-strapi-content] {
+  background: #0f0f1a !important;
+}
+
+button[data-strapi-color="primary"] {
+  background: linear-gradient(45deg, #8A2BE2, #7209b7) !important;
+  box-shadow: 0 0 15px rgba(138, 43, 226, 0.3) !important;
+}
+
+[aria-current="page"] {
+  box-shadow: 0 0 10px rgba(138, 43, 226, 0.5) !important;
+  border-left: 3px solid #8A2BE2 !important;
+}
