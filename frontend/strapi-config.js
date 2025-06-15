@@ -445,7 +445,7 @@ const StrapiConfig = {
                 },
                 destaque: true,
                 ativo: true,
-                imagens: [{ url: 'IMG/LOGIMG1.png' }]
+                imagens: [{ url: 'IMG/8461i-medium.png' }]
             }
         ];
     },
