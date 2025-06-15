@@ -374,7 +374,10 @@ function renderProdutos() {
 // Criar card do produto
 function createProdutoCard(produto) {
     const card = document.createElement('div');
-    card.className = 'product-card bg-[#12121e] rounded-lg overflow-hidden border border-gray-800 glow-box';
+    card.className = 'product-card bg-[#12121e] rounded-lg overflow-hidden border border-gray-800 glow-box cursor-pointer';
+    card.onclick = () => {
+        window.location.href = `produto-detalhes.html?id=${produto.id}`;
+    };
 
     // Determinar imagem
     let imagemSrc;
@@ -393,8 +396,8 @@ function createProdutoCard(produto) {
     const caracteristicas = Array.isArray(produto.caracteristicas) ? produto.caracteristicas.slice(0, 3) : [];
 
     card.innerHTML = `
-        <div class="h-64 overflow-hidden">
-            <img src="${imagemSrc}" alt="${produto.nome}" class="w-full h-full object-contain transition-transform duration-500 hover:scale-105" onerror="this.src='${StrapiConfig.createPlaceholderImage(produto.nome)}'">
+        <div class="aspect-square overflow-hidden">
+            <img src="${imagemSrc}" alt="${produto.nome}" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" onerror="this.src='${StrapiConfig.createPlaceholderImage(produto.nome)}'">
         </div>
         <div class="p-6">
             <div class="flex items-start mb-4">
@@ -417,13 +420,17 @@ function createProdutoCard(produto) {
                 </ul>
             ` : ''}
             <div class="flex gap-2">
-                <a href="produto-detalhes.html?id=${produto.id}" class="flex-1 text-center py-2 bg-primary text-white rounded-button hover:bg-opacity-90 transition-colors">
+                <a href="produto-detalhes.html?id=${produto.id}" 
+                   class="flex-1 text-center py-2 bg-primary text-white rounded-button hover:bg-opacity-90 transition-colors"
+                   onclick="event.stopPropagation();">
                     Ver detalhes
                 </a>
                 <a href="https://wa.me/351938579125?text=${encodeURIComponent(`Olá! Gostaria de saber mais sobre o produto: ${produto.nome}`)}" 
                    target="_blank" 
-                   class="px-4 py-2 border border-primary text-primary rounded-button hover:bg-primary hover:text-white transition-colors">
+                   class="px-4 py-2 border border-primary text-primary rounded-button hover:bg-primary hover:text-white transition-colors"
+                   onclick="event.stopPropagation();">
                     <i class="ri-whatsapp-line"></i>
+                    Solicitar Orçamento
                 </a>
             </div>
         </div>
