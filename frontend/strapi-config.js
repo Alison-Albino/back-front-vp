@@ -365,9 +365,9 @@ const StrapiConfig = {
         return [
             {
                 id: 1,
-                nome: "Bticino Classe 300X",
+                nome: "Bticino classe 300EOS",
                 marca: "Bticino",
-                categoria: "Vídeo Porteiro",
+                categoria: "Beticino",
                 descricao: "Vídeo porteiro premium com tela touch de 7 polegadas e conectividade Wi-Fi integrada. Ideal para residências e condomínios que buscam segurança e praticidade.",
                 caracteristicas: [
                     "Tela touch 7 polegadas",
@@ -383,17 +383,16 @@ const StrapiConfig = {
                     "Alimentação": "12V DC",
                     "Temperatura": "-10°C a +55°C"
                 },
-                preco: 1299.99,
                 destaque: true,
                 ativo: true,
-                imagens: []
+                imagens: [{ url: 'classe300EOS.png' }]
             },
             {
                 id: 2,
-                nome: "Intelbras IV 7010 HF",
-                marca: "Intelbras",
-                categoria: "Vídeo Porteiro",
-                descricao: "Vídeo porteiro com tela LCD de 7 polegadas, função hands-free e design moderno. Perfeito para casas e apartamentos.",
+                nome: "Duox Plus Digital 1W",
+                marca: "FERMAX",
+                categoria: "FERMAX",
+                descricao: "Painel de vídeo urbano digital.",
                 caracteristicas: [
                     "Tela LCD 7 polegadas",
                     "Função hands-free",
@@ -406,19 +405,18 @@ const StrapiConfig = {
                     "Resolução": "800x480",
                     "Alimentação": "12V DC",
                     "Consumo": "Máx. 15W",
-                    "Dimensões": "200x155x20mm"
+                    "Wi-fi"
                 },
-                preco: 899.99,
                 destaque: false,
                 ativo: true,
-                imagens: []
+                imagens: [{ url: '' }]
             },
             {
                 id: 3,
-                nome: "Fechadura Digital Yale YDM 4109",
-                marca: "Yale",
+                nome: "Quadra 8451V",
+                marca: "Comelit",
                 categoria: "Fechadura Digital",
-                descricao: "Fechadura digital com múltiplas formas de abertura: senha, cartão, chave mecânica e aplicativo móvel.",
+                descricao: "Videoporteiro Quadra 8451V com Monitor Wifi.",
                 caracteristicas: [
                     "Abertura por senha",
                     "Cartão de proximidade",
@@ -433,10 +431,9 @@ const StrapiConfig = {
                     "Material": "Liga de zinco",
                     "Garantia": "2 anos"
                 },
-                preco: 2199.99,
                 destaque: true,
                 ativo: true,
-                imagens: []
+                imagens: [{ url: 'IMG1.png' }]
             }
         ];
     },
