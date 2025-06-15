@@ -405,7 +405,7 @@ const StrapiConfig = {
                     "Resolução": "800x480",
                     "Alimentação": "12V DC",
                     "Consumo": "Máx. 15W",
-                    "Wi-fi"
+                    "Conectividade": "Wi-fi"
                 },
                 destaque: false,
                 ativo: true,
