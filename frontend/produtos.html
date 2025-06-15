@@ -312,13 +312,13 @@ async function loadProdutos() {
 
         // Usar a configuração do strapi-config.js
         allProdutos = await window.StrapiConfig.fetchProdutos();
-        filteredProdutos = [...allProdutos];
+        // filteredProdutos = [...allProdutos]; // REMOVIDO: será filtrado por applyFilters
 
         console.log('📊 Total de produtos carregados:', allProdutos.length);
         console.log('📦 Produtos:', allProdutos);
 
         await loadCategorias();
-        renderProdutos();
+        // renderProdutos(); // REMOVIDO: será chamado por applyFilters
         hideLoading();
 
     } catch (error) {
@@ -494,9 +494,24 @@ function hideStates() {
 document.addEventListener('DOMContentLoaded', function() {
     console.log('🚀 DOM carregado, iniciando aplicação...');
 
+    // Obter categoria da URL, se existir
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialCategory = urlParams.get('category') || 'all';
+    currentCategory = initialCategory;
+
     // Aguardar um pouco para garantir que strapi-config.js foi carregado
-    setTimeout(() => {
-        loadProdutos();
+    setTimeout(async () => {
+        await loadProdutos();
+        // Ativar o botão de categoria correto após o carregamento dos produtos e categorias
+        document.querySelectorAll('.filter-button').forEach(btn => btn.classList.remove('active'));
+        const activeButton = document.querySelector(`[data-category="${currentCategory}"]`);
+        if (activeButton) {
+            activeButton.classList.add('active');
+        } else if (currentCategory !== 'all') {
+            // Se a categoria da URL não for encontrada, volte para 'Todos'
+            filterByCategory('all');
+        }
+        applyFilters(); // Adicionado: Aplica os filtros após carregar produtos e categorias
     }, 100);
 
     // Event listeners

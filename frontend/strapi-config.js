@@ -379,7 +379,7 @@ const StrapiConfig = {
                 id: 1,
                 nome: "Bticino classe 300EOS",
                 marca: "Bticino",
-                categoria: "Beticino",
+                categoria: "Bticino",
                 descricao: "Vídeo porteiro premium com tela touch de 7 polegadas e conectividade Wi-Fi integrada. Ideal para residências e condomínios que buscam segurança e praticidade.",
                 caracteristicas: [
                     "Tela touch 7 polegadas",
@@ -427,7 +427,7 @@ const StrapiConfig = {
                 id: 3,
                 nome: "Quadra 8451V",
                 marca: "Comelit",
-                categoria: "Fechadura Digital",
+                categoria: "Comelit",
                 descricao: "Videoporteiro Quadra 8451V com Monitor Wifi.",
                 caracteristicas: [
                     "Abertura por senha",
