@@ -445,6 +445,7 @@ function renderCarousel(index) {
     // Atualizar imagem principal
     mainImage.src = currentImage.url;
     mainImage.alt = currentImage.alternativeText || produtoNome;
+    console.log('DEBUG: URL final da imagem principal:', mainImage.src);
 
     // Atualizar thumbnails
     thumbnailList.innerHTML = '';

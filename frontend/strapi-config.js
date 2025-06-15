@@ -397,7 +397,7 @@ const StrapiConfig = {
                 },
                 destaque: true,
                 ativo: true,
-                imagens: [{ url: 'IMG/classe300EOS.png' }]
+                imagens: [{ url: 'IMG/classe300EOS-alexa.png' }]
             },
             {
                 id: 2,
@@ -445,7 +445,7 @@ const StrapiConfig = {
                 },
                 destaque: true,
                 ativo: true,
-                imagens: [{ url: 'IMG/IMG1.png' }]
+                imagens: [{ url: 'IMG/LOGIMG1.png' }]
             }
         ];
     },
