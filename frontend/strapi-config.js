@@ -409,7 +409,7 @@ const StrapiConfig = {
                 },
                 destaque: false,
                 ativo: true,
-                imagens: [{ url: '' }]
+                imagens: [{ url: '9468Monitorveoxlchica.png' }]
             },
             {
                 id: 3,
