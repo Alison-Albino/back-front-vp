@@ -7,7 +7,7 @@ export default [
       contentSecurityPolicy: {
         useDefaults: true,
         directives: {
-          'connect-src': ["'self'", 'https:'],
+          'connect-src': ["'self'", 'https:', 'https://clever-marigold-fb8af3.netlify.app'],
           'img-src': [
             "'self'",
             'data:',
@@ -27,7 +27,14 @@ export default [
       },
     },
   },
-  'strapi::cors',
+  {
+    name: 'strapi::cors',
+    config: {
+      origin: ['https://clever-marigold-fb8af3.netlify.app', 'http://localhost:1337'],
+      headers: '*',
+      methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],
+    },
+  },
   'strapi::poweredBy',
   'strapi::query',
   'strapi::body',
