@@ -1,11 +1,9 @@
 // Script para integrar com seu index.html
 // Adicione este código no final do seu index.html, antes do </body>
 
-const API_URL = (window.VITE_API_URL || 'https://video-porteiro-backend.onrender.com');
-
 async function carregarProdutos() {
     try {
-        const response = await fetch(`${API_URL}/api/produtos?populate=*`);
+        const response = await fetch('http://localhost:1337/api/produtos?populate=*');
         const data = await response.json();
         
         const produtos = data.data;
@@ -23,7 +21,7 @@ async function carregarProdutos() {
         produtos.forEach(produto => {
             const attrs = produto.attributes;
             const imagemUrl = attrs.imagem_principal?.data?.attributes?.url 
-                ? `${API_URL}${attrs.imagem_principal.data.attributes.url}`
+                ? `http://localhost:1337${attrs.imagem_principal.data.attributes.url}`
                 : 'img/default.jpg';
             
             const caracteristicas = attrs.caracteristicas?.recursos || [];

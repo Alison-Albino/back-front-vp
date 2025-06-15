@@ -4,7 +4,7 @@ const StrapiConfig = {
     BASE_URL: 'https://video-porteiro-backend.onrender.com',
 
     // Modo fallback (usar dados estáticos se Strapi não estiver disponível)
-    FALLBACK_MODE: false, // ← Produção: buscar sempre do backend
+    FALLBACK_MODE: false, // Produção: buscar sempre do backend
 
     // Endpoints da API
     ENDPOINTS: {
