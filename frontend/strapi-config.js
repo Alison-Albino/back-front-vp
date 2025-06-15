@@ -241,7 +241,19 @@ const StrapiConfig = {
             const attrs = img.attributes || img;
             let imageUrl = attrs.url;
 
-            // Se não houver URL, usa a imagem de placeholder
+            // Determine if it's a full URL, a local relative path, or a Strapi relative path
+            if (imageUrl && !imageUrl.startsWith('http://') && !imageUrl.startsWith('https://')) {
+                // If it's a Strapi asset path (starts with '/'), prepend BASE_URL
+                if (imageUrl.startsWith('/')) {
+                    imageUrl = `${this.BASE_URL}${imageUrl}`;
+                } else {
+                    // Else, it's a local relative path (e.g., 'IMG/image.png' or 'image.png'), use as is
+                    // No action needed, imageUrl is already the correct relative path
+                }
+            }
+            // If it starts with http, it's already a full URL, use as is.
+
+            // If no URL exists, use placeholder
             if (!imageUrl) {
                 console.warn('⚠️ Imagem sem URL. Usando placeholder para:', img);
                 imageUrl = this.createPlaceholderImage(img.name || 'Imagem');
@@ -249,7 +261,7 @@ const StrapiConfig = {
 
             return {
                 id: img.id || attrs.id,
-                url: imageUrl.startsWith('http') ? imageUrl : `${this.BASE_URL}${imageUrl}`,
+                url: imageUrl,
                 alternativeText: attrs.alternativeText || '',
                 caption: attrs.caption || '',
                 width: attrs.width,
