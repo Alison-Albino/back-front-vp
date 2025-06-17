@@ -7,7 +7,7 @@ module.exports = ({ env }) => ({
   webhooks: {
     populateRelations: env.bool('WEBHOOKS_POPULATE_RELATIONS', false),
   },
-  url: env('PUBLIC_URL', 'https://video-porteiro-backend.onrender.com'),
+  url: env('PUBLIC_URL', 'https://app.forcemax.pt'),
   proxy: true,
   cron: {
     enabled: false,

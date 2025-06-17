@@ -7,7 +7,7 @@ export default [
       contentSecurityPolicy: {
         useDefaults: true,
         directives: {
-          'connect-src': ["'self'", 'https:', 'https://clever-marigold-fb8af3.netlify.app'],
+          'connect-src': ["'self'", 'https:', 'https://app.forcemax.pt'],
           'img-src': [
             "'self'",
             'data:',
@@ -30,7 +30,7 @@ export default [
   {
     name: 'strapi::cors',
     config: {
-      origin: ['https://clever-marigold-fb8af3.netlify.app', 'http://localhost:1337'],
+      origin: ['https://app.forcemax.pt', 'http://localhost:1337'],
       headers: '*',
       methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],
     },

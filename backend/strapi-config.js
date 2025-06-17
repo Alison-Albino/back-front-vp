@@ -1,10 +1,10 @@
 // Configuração do Strapi para Vitrine de Produtos - VERSÃO CORRIGIDA
 const StrapiConfig = {
     // URL base do Strapi
-    BASE_URL: 'http://localhost:1337',
+    BASE_URL: 'https://app.forcemax.pt',
 
     // Modo fallback (usar dados estáticos se Strapi não estiver disponível)
-    FALLBACK_MODE: true, // ← Mudado para true temporariamente para debug
+    FALLBACK_MODE: false, // ← Mudado para false para usar o servidor real
 
     // Endpoints da API
     ENDPOINTS: {

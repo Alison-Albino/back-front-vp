@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Categoria Fermax - Vídeo Porteiros e Controles de Acesso</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" />
+<link rel="shortcut icon" href="Favicon.webp" type="image/x-icon" />
+<!-- Swiper CSS -->
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+/>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: { primary: '#8A2BE2', secondary: '#6a11cb' },
+        borderRadius: {
+          none: '0px',
+          sm: '4px',
+          DEFAULT: '8px',
+          md: '12px',
+          lg: '16px',
+          xl: '20px',
+          '2xl': '24px',
+          '3xl': '32px',
+          full: '9999px',
+          button: '8px',
+        },
+      },
+    },
+  };
+</script>
+<style>
+  :where([class^="ri-"])::before {
+    content: "\f3c2";
+  }
+  body {
+    background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 100%);
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+  }
+  /* Header com fundo blur e transparência */
+  #main-header {
+    background-color: transparent;
+    transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+    backdrop-filter: none;
+  }
+  #main-header.scrolled {
+    background-color: rgba(20, 20, 30, 0.95);
+    backdrop-filter: blur(8px);
+  }
+  .glow-text {
+    text-shadow: 0 0 15px rgba(138, 43, 226, 0.7);
+  }
+  .glow-box {
+    box-shadow: 0 0 20px rgba(138, 43, 226, 0.3);
+  }
+  .badge-glow {
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(138, 43, 226, 0.7);
+    }
+    70% {
+      box-shadow: 0 0 0 10px rgba(138, 43, 226, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(138, 43, 226, 0);
+    }
+  }
+  /* Vídeo background com camada de blur controlável */
+  main section {
+    position: relative;
+    border-radius: 24px;
+    padding: 4rem 2rem 5rem;
+    box-shadow: 0 0 40px rgba(138, 43, 226, 0.3);
+    overflow: hidden;
+    background: none; /* removido background imagem */
+  }
+  main section .video-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 24px;
+    overflow: hidden;
+    z-index: 0;
+    pointer-events: none;
+  }
+  main section video.bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.5);
+  }
+  main section .video-blur-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(8px); /* ajuste aqui o blur */
+    background-color: rgba(0, 0, 0, 0.25); /* camada escura para contraste */
+    pointer-events: none;
+  }
+  main section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(138, 43, 226, 0.6), rgba(106, 17, 203, 0.6));
+    mix-blend-mode: multiply;
+    border-radius: 24px;
+    z-index: 1;
+  }
+  #categoryContent {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+  }
+  #categoryName {
+    font-size: 3.5rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 1.5rem;
+  }
+  /* Swiper carousel styles */
+  .swiper {
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2rem;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 0 30px rgba(138, 43, 226, 0.4);
+  }
+  .swiper-slide img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+  /* Responsivo para o vídeo e carrossel */
+  #videoContainer {
+    position: relative;
+    width: 100%;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 0 30px rgba(138, 43, 226, 0.4);
+    margin-bottom: 2rem;
+  }
+  #videoContainer iframe {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+  }
+  #videoContainer iframe:hover {
+    transform: scale(1.05);
+  }
+  #categoryTitle {
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+  #categoryDescription {
+    font-size: 1.125rem;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+    color: #d1d5db;
+    margin-bottom: 2rem;
+  }
+  a.button-primary {
+    background-color: #8A2BE2;
+    color: white;
+    padding: 0.85rem 2rem;
+    border-radius: 12px;
+    font-weight: 700;
+    display: inline-block;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0 10px rgba(138, 43, 226, 0.6);
+  }
+  a.button-primary:hover {
+    background-color: #6a11cb;
+    box-shadow: 0 0 20px rgba(106, 17, 203, 0.9);
+  }
+  /* Footer ajustes */
+  footer {
+    background-color: #0a0a14;
+    border-top: 1px solid #2c2c3a;
+  }
+  footer a:hover {
+    color: #8A2BE2;
+  }
+  /* WhatsApp button fix */
+  .whatsapp-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 100;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: #25d366;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.6);
+    transition: background-color 0.3s ease;
+  }
+  .whatsapp-button:hover {
+    background-color: #1ebe57;
+  }
+  .whatsapp-button i {
+    font-size: 28px;
+    color: white;
+  }
+</style>
+</head>
+<body>
+<!-- Header -->
+<header class="fixed w-full z-50 transition-all duration-300" id="main-header">
+  <div class="container mx-auto px-4 py-4">
+    <div class="flex flex-col md:flex-row justify-center items-center">
+      <a href="index.html" class="text-2xl font-['Pacifico'] text-primary mb-4 md:mb-0 md:mr-12">
+        <img width="120" height="250" src="Logo.png" alt="Logo" />
+      </a>
+      <nav class="hidden md:flex items-center space-x-12">
+        <a href="index.html#diferenciais" class="text-gray-300 hover:text-white transition-colors">Diferencial</a>
+        <a href="index.html#sobre" class="text-gray-300 hover:text-white transition-colors">Sobre nós</a>
+        <a href="produtos.html" class="text-white font-medium">Produtos</a>
+        <a href="index.html#orcamento" class="px-6 py-2 bg-primary text-white rounded-button hover:bg-opacity-90 transition-all whitespace-nowrap">
+          Fazer orçamento
+        </a>
+      </nav>
+      <button class="md:hidden w-10 h-10 flex items-center justify-center text-white absolute right-4 top-4">
+        <i class="ri-menu-line text-2xl"></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="pt-20">
+  <section class="container mx-auto px-4 py-16 rounded-3xl">
+    <div class="video-wrapper">
+      <video class="bg-video" autoplay loop muted playsinline>
+        <source src="img/bg-vid.mp4" type="video/mp4" />
+        Seu navegador não suporta vídeo em background.
+      </video>
+      <div class="video-blur-layer"></div>
+    </div>
+    <div id="categoryContent" class="max-w-5xl mx-auto text-center">
+      <h1 id="categoryName" class="text-5xl font-bold mb-6 glow-text">Fermax</h1>
+
+      <p class="text-gray-400 text-lg mb-10 max-w-3xl mx-auto">
+        Explore a linha de vídeo porteiros Fermax, que combina tecnologia de ponta com design sofisticado, oferecendo segurança e conforto para sua residência ou empresa. Descubra soluções inovadoras para controle de acesso e comunicação visual.
+      </p>
+
+      <!-- Swiper Carousel -->
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img src="img/Fermax/2. img-DUOXPLUS.jpg" alt="Fermax 1" />
+          </div>
+          <div class="swiper-slide">
+            <img src="img/Fermax/FVQ-6020-V3B__08092.png" alt="Fermax 2" />
+          </div>
+          <div class="swiper-slide">
+            <img src="img/Fermax/j6rjka5u6xr-768x449.png" alt="Fermax 3" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Video responsivo -->
+      <div id="videoContainer">
+        <iframe
+          src="https://www.youtube.com/embed/xg1YvVe4dXk?autoplay=1&mute=1&controls=0&loop=1&playlist=xg1YvVe4dXk"
+          title="DUOX PLUS: Más Potente | Videoporteros FERMAX"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
+      </div>
+
+      <h2 id="categoryTitle" class="text-3xl font-semibold mb-4">Soluções de Vídeo Porteiros Fermax</h2>
+      <p id="categoryDescription" class="text-gray-300 text-lg leading-relaxed mb-10 max-w-3xl mx-auto">
+        A Fermax é uma marca reconhecida mundialmente por suas soluções de vídeo porteiros e sistemas de controle de acesso. Com uma combinação de inovação tecnológica e design elegante, os produtos Fermax oferecem segurança e conforto para residências e empresas. Descubra como os vídeo porteiros Fermax podem transformar a forma como você se conecta com o mundo ao seu redor.
+      </p>
+      <div class="text-center">
+        <a href="produtos.html?category=Fermax" id="btnAllProducts" class="button-primary" aria-label="Ir para todos os produtos">
+          Ver todos os produtos desta categoria
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Footer -->
+<footer class="bg-[#0a0a14] pt-16 pb-8">
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+      <div>
+        <a href="index.html" class="text-2xl font-['Pacifico'] text-primary mb-4 md:mb-0 md:mr-12">
+          <img width="120" height="250" src="Logo.png" alt="Logo" />
+        </a>
+        <p class="text-gray-400 mb-6">Soluções tecnológicas para segurança e conforto do seu lar ou empresa.</p>
+        <div class="flex space-x-4">
+          <a href="#" class="w-10 h-10 rounded-full bg-[#12121e] flex items-center justify-center text-gray-300 hover:text-primary transition-colors">
+            <i class="ri-facebook-fill"></i>
+          </a>
+          <a href="#" class="w-10 h-10 rounded-full bg-[#12121e] flex items-center justify-center text-gray-300 hover:text-primary transition-colors">
+            <i class="ri-instagram-line"></i>
+          </a>
+          <a href="#" class="w-10 h-10 rounded-full bg-[#12121e] flex items-center justify-center text-gray-300 hover:text-primary transition-colors">
+            <i class="ri-linkedin-fill"></i>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h3 class="text-lg font-bold mb-4">Navegação</h3>
+        <ul class="space-y-3">
+          <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors">Início</a></li>
+          <li><a href="index.html#diferenciais" class="text-gray-400 hover:text-white transition-colors">Diferenciais</a></li>
+          <li><a href="index.html#sobre" class="text-gray-400 hover:text-white transition-colors">Sobre nós</a></li>
+          <li><a href="index.html#orcamento" class="text-gray-400 hover:text-white transition-colors">Orçamento</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-lg font-bold mb-4">Serviços</h3>
+        <ul class="space-y-3">
+          <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Vídeo porteiros</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Controle de acesso</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Automação residencial</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Manutenção</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-lg font-bold mb-4">Contato</h3>
+        <ul class="space-y-3">
+          <li class="flex items-start">
+            <i class="ri-map-pin-line text-primary mt-1 mr-3"></i>
+            <span class="text-gray-400">Portugal</span>
+          </li>
+          <li class="flex items-start">
+            <i class="ri-phone-line text-primary mt-1 mr-3"></i>
+            <span class="text-gray-400">+351 938 579 125</span>
+          </li>
+          <li class="flex items-start">
+            <i class="ri-mail-line text-primary mt-1 mr-3"></i>
+            <span class="text-gray-400"><a href="mailto:contato@exemplo.com">contato@exemplo.com</a></span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-gray-800 pt-8">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <p class="text-gray-500 text-sm mb-4 md:mb-0">© 2025 Todos os direitos reservados - Dev Alison Albino</p>
+        <div class="flex items-center space-x-4">
+          <a href="#" class="text-gray-500 hover:text-white text-sm">Política de Privacidade</a>
+          <a href="#" class="text-gray-500 hover:text-white text-sm">Termos de Uso</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp Button -->
+<a
+  href="https://wa.me/351938579125"
+  class="whatsapp-button"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="WhatsApp"
+>
+  <i class="ri-whatsapp-line"></i>
+</a>
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+<script>
+  const swiper = new Swiper('.swiper', {
+    loop: true,
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+    },
+    slidesPerView: 1,
+    spaceBetween: 20,
+  });
+
+  // Header scroll effect igual à página produtos.html
+  const header = document.getElementById('main-header');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  });
+</script>
+</body>
+</html>

@@ -8,7 +8,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
-<link rel="shortcut icon" href="Logo.png" type="image/x-icon">
+<link rel="shortcut icon" href="Favicon.webp" type="image/x-icon">
+
 <script src="https://cdn.tailwindcss.com/3.4.16"></script>
 <script>tailwind.config={theme:{extend:{colors:{primary:'#8A2BE2',secondary:'#6a11cb'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
 <style>
@@ -30,8 +31,8 @@ top: 0;
 left: 0;
 right: 0;
 bottom: 0;
-background: url('img/bg.jpg') center/cover no-repeat;
-opacity: 0.5;
+background: url('img/bg.webp') center/cover no-repeat;
+opacity: 100%;
 z-index: -1;
 }
 .glow-text {
@@ -41,7 +42,7 @@ text-shadow: 0 0 15px rgba(138, 43, 226, 0.7);
 box-shadow: 0 0 20px rgba(138, 43, 226, 0.3);
 }
 .product-card {
-transition: transform 0.3s ease, box-shadow 0.3s ease;
+transition: transform 0.1s ease, box-shadow 0.1s ease;
 }
 .product-card:hover {
 transform: translateY(-5px);
@@ -84,7 +85,7 @@ z-index: 100;
 <header class="fixed w-full z-50 transition-all duration-300" id="main-header">
 <div class="container mx-auto px-4 py-4">
 <div class="flex flex-col md:flex-row justify-center items-center">
-<a href="#inicio0" class="text-2xl font-['Pacifico'] text-primary mb-4 md:mb-0 md:mr-12"> <img width="28" height="28" src="Logo.png" alt=""> </a>
+<a href="#inicio5" class="text-2xl font-['Pacifico'] text-primary mb-4 md:mb-0 md:mr-12"> <img width="120" height="250" src="Logo.png" alt=""> </a>
 <nav class="hidden md:flex items-center space-x-12">
 <a href="#diferenciais" class="text-gray-300 hover:text-white transition-colors">Diferencial</a>
 <a href="#sobre" class="text-gray-300 hover:text-white transition-colors">Sobre nós</a>
@@ -108,7 +109,7 @@ Fazer orçamento
 <div class="flex flex-col items-center text-center mb-8">
 
 </div>
-<h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-center mb-4 glow-text">
+<h1 id="inicio5" class="text-4xl md:text-6xl lg:text-7xl font-bold text-center mb-4 glow-text">
 Inovando no mercado<br>de instalações.
 </h1>
 <p class="text-xl md:text-2xl text-gray-300 text-center max-w-3xl mx-auto mb-12">
@@ -132,7 +133,7 @@ Solicitar Orçamento
 </div>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 <!-- Bticino -->
-<div class="product-card bg-[#12121e] rounded-lg overflow-hidden border border-gray-800 glow-box transition-all duration-300 hover:scale-103 hover:shadow-lg hover:shadow-primary/30 cursor-pointer" onclick="window.location.href = 'produtos.html?category=Bticino'">
+<div class="product-card bg-[#12121e] rounded-lg overflow-hidden border border-gray-800 glow-box transition-all duration-300 hover:scale-103 hover:shadow-lg hover:shadow-primary/30 cursor-pointer" onclick="window.location.href = 'categoria-Bticino.html?category=Bticino'">
 <div class="h-64 overflow-hidden">
 <img src="img/img1.webp" alt="Bticino Video Porteiro" class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105">
 </div>
@@ -162,11 +163,11 @@ Câmera HD com visão noturna
 Atendimento remoto via aplicativo
 </li>
 </ul>
-<a href="produtos.html" class="inline-block w-full text-center py-2 border border-primary text-primary rounded-button hover:bg-primary hover:text-white transition-colors whitespace-nowrap" onclick="event.stopPropagation();">Ver informações</a>
+<a href="categoria-Bticino.html" class="inline-block w-full text-center py-2 border border-primary text-primary rounded-button hover:bg-primary hover:text-white transition-colors whitespace-nowrap" onclick="event.stopPropagation();">Ver informações</a>
 </div>
 </div>
 <!-- Fermax -->
-<div class="product-card bg-[#12121e] rounded-lg overflow-hidden border border-gray-800 glow-box transition-all duration-300 hover:scale-103 hover:shadow-lg hover:shadow-primary/30 cursor-pointer" onclick="window.location.href = 'produtos.html?category=FERMAX'">
+<div class="product-card bg-[#12121e] rounded-lg overflow-hidden border border-gray-800 glow-box transition-all duration-300 hover:scale-103 hover:shadow-lg hover:shadow-primary/30 cursor-pointer" onclick="window.location.href = 'categoria-Fermax.html?category=FERMAX'">
 <div class="h-64 overflow-hidden">
 <img src="img/img2.webp" alt="Fermax Controle de Acesso" class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105">
 </div>
@@ -196,11 +197,11 @@ Software de gestão de acessos
 Registro de eventos em tempo real
 </li>
 </ul>
-<a href="produtos.html" class="inline-block w-full text-center py-2 border border-primary text-primary rounded-button hover:bg-primary hover:text-white transition-colors whitespace-nowrap" onclick="event.stopPropagation();">Ver informações</a>
+<a href="categoria-Fermax.html" class="inline-block w-full text-center py-2 border border-primary text-primary rounded-button hover:bg-primary hover:text-white transition-colors whitespace-nowrap" onclick="event.stopPropagation();">Ver informações</a>
 </div>
 </div>
 <!-- Comelit -->
-<div class="product-card bg-[#12121e] rounded-lg overflow-hidden border border-gray-800 glow-box transition-all duration-300 hover:scale-103 hover:shadow-lg hover:shadow-primary/30 cursor-pointer" onclick="window.location.href = 'produtos.html?category=Comelit'">
+<div class="product-card bg-[#12121e] rounded-lg overflow-hidden border border-gray-800 glow-box transition-all duration-300 hover:scale-103 hover:shadow-lg hover:shadow-primary/30 cursor-pointer" onclick="window.location.href = 'categoria-Comelit.html?category=Comelit'">
 <div class="h-64 overflow-hidden">
 <img src="img/img3.webp" alt="Comelit Sistema Integrado" class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105">
 </div>
@@ -230,7 +231,7 @@ Controle por comandos de voz
 Automação residencial avançada
 </li>
 </ul>
-<a href="produtos.html" class="inline-block w-full text-center py-2 border border-primary text-primary rounded-button hover:bg-primary hover:text-white transition-colors whitespace-nowrap" onclick="event.stopPropagation();">Ver informações</a>
+<a href="categoria-Comelit.html" class="inline-block w-full text-center py-2 border border-primary text-primary rounded-button hover:bg-primary hover:text-white transition-colors whitespace-nowrap" onclick="event.stopPropagation();">Ver informações</a>
 </div>
 </div>
 </div>
@@ -547,7 +548,7 @@ document.addEventListener('DOMContentLoaded', () => {
 <div class="container mx-auto px-4">
 <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
 <div>
-<a href="#" class="text-2xl font-['Pacifico'] text-primary mb-4 md:mb-0 md:mr-12"> <img width="28" height="28" src="Logo.png" alt=""> </a>
+<a href="#" class="text-2xl font-['Pacifico'] text-primary mb-4 md:mb-0 md:mr-12"> <img width="120" height="280" src="Logo.png" alt=""> </a>
 <p class="text-gray-400 mb-6">Soluções tecnológicas para segurança e conforto do seu lar ou empresa.</p>
 <div class="flex space-x-4">
 <a href="#" class="w-10 h-10 rounded-full bg-[#12121e] flex items-center justify-center text-gray-300 hover:text-primary transition-colors">

@@ -1,7 +1,7 @@
 // Configuração do Strapi para Vitrine de Produtos - VERSÃO CORRIGIDA
 const StrapiConfig = {
     // URL base do Strapi
-    BASE_URL: 'http://37.59.112.125:1337',
+    BASE_URL: 'https://app.forcemax.pt',
 
     // Modo fallback (usar dados estáticos se Strapi não estiver disponível)
     FALLBACK_MODE: false, // Produção: buscar sempre do backend
